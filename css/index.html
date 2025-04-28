@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <div class="scene">
+        <div class="cube">
+            <div class="face front"></div>
+            <div class="face back"></div>
+            <div class="face left"></div>
+            <div class="face right"></div> 
+            <div class="face top"></div>
+            <div class="face bottom"></div>
+        </div>
+    </div>
+    <!-- <h1>Hello</h1>
+    
+    <div id="gallery">
+        <img src="https://placehold.co/600x400/FF0000/FFFFFF?text=Image+1" alt="Image 1">
+        <img src="https://placehold.co/600x400/00FF00/FFFFFF?text=Image+2" alt="Image 2">
+        <img src="https://placehold.co/600x400/0000FF/FFFFFF?text=Image+3" alt="Image 3">
+        <img src="https://placehold.co/600x400/FFFF00/FFFFFF?text=Image+4" alt="Image 4">
+        <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Image+5" alt="Image 5">
+    </div>
+    
+    <button id="next">Next</button>
+    <button id="back">Back</button> -->
+
+
+    <div class="progress-bar">
+        <div class="active"></div>
+    </div>
+
+    <script>
+        const gallery = document.querySelector("#gallery");
+        let scrollPosition = 0;
+
+        document.querySelector("#next").addEventListener("click", () => {
+            if (scrollPosition > -((gallery.scrollWidth / 5) - gallery.clientWidth)) {
+                scrollPosition -= 150;
+                gallery.style.transform = `translateX(${scrollPosition}px)`;
+            }
+        });
+
+        document.querySelector("#back").addEventListener("click", () => {
+            if (scrollPosition < 0) {
+                scrollPosition += 150;
+                gallery.style.transform = `translateX(${scrollPosition}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="display: flex;">
+
+
+    <div class="placeholder" style="width: 40vw; border: 1px solid red;">
+        <img src="https://placehold.co/600x400/FF0000/FFFFFF?text=Image+1" id="1" alt="Image 1" draggable="true">
+        <img src="https://placehold.co/600x400/00FF00/FFFFFF?text=Image+2" id="2" alt="Image 2" draggable="true">
+        <img src="https://placehold.co/600x400/0000FF/FFFFFF?text=Image+3" alt="Image 3" draggable="true">
+    </div>
+    <div  class="placeholder" style="width: 40vw; border: 1px solid red;">
+        <img src="https://placehold.co/600x400/FFFF00/FFFFFF?text=Image+4" alt="Image 4">
+
+    </div>
+</body>
+
+<script>
+    let placeholders = document.querySelectorAll(".placeholder")
+    let elements = []
+    
+    placeholders.forEach(e => {
+        elements  =  [...elements , ...Array.from(e.children)]
+    })
+
+    console.log(elements)
+    elements.forEach(e => {
+        e.addEventListener("dragstart", (e) => {
+            if (e.target.id) {
+                e.dataTransfer.setData("text/plain", e.target.id)
+            } else {
+                e.target.id = Date.now()
+                e.dataTransfer.setData("text/plain", e.target.id)
+            }
+        })
+    })
+    placeholders.forEach((placeholder) => {
+        placeholder.addEventListener("dragover", (ev) => {
+            ev.preventDefault();
+        })
+        placeholder.addEventListener("drop", (e) => {
+            let id = e.dataTransfer.getData("text/plain");
+            let element = document.getElementById(id)
+            placeholder.appendChild(element)
+        })
+
+    })
+</script>
+
+</html>

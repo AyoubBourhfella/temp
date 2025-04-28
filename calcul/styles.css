@@ -1,0 +1,37 @@
+.numbers , .operators {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 350px;
+}
+.operators{
+    width: 120px;
+    flex-direction: column;
+}
+.numbers button {
+    width: 30%;
+    height: 100px;
+    aspect-ratio:  1/1;
+}
+.numbers button:last-child  {
+    width: 100%;
+    height: 100px;
+    aspect-ratio:  1/1;
+}
+.screen{
+    width: 500px;
+    height: 100px;
+    margin: 10px 0 ;
+    background-color: #c2c2c2;
+}
+.operators button {
+    width: 100%;
+    height: 100px;
+    aspect-ratio:  1/1;
+}
+.flex{
+    display: flex;
+    gap: 10px;
+}
